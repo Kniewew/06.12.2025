@@ -35,6 +35,7 @@ def prompt(xle):
             break
         else:
             continue
+
 def win_player(a):
     """определяет победителя"""
     for i in range(3):
@@ -47,32 +48,32 @@ def win_player(a):
             if xle[0][2] =="X" and xle[1][1] == "X" and xle[2][0] == "X":
                 a += 3
             if a == 3:
-                return a
-def win_machine(a):
+                return True
+def win_machine(b):
     """определяет победителя"""
     for i in range(3):
-        a = 0
+        b = 0
         for j in range(3):
-            if xle[i][j] == "X" or xle[j][i] == "X":
-                a += 1
-            if xle[0][0] == "X" and xle[1][1] == "X" and xle[2][2] == "X":
-                a += 3
-            if xle[0][2] =="X" and xle[1][1] == "X" and xle[2][0] == "X":
-                a += 3
-            if a == 3:
-                return a
+            if xle[i][j] == "O" or xle[j][i] == "O":
+                b += 1
+            if xle[0][0] == "O" and xle[1][1] == "O" and xle[2][2] == "O":
+                b += 3
+            if xle[0][2] =="O" and xle[1][1] == "O" and xle[2][0] == "O":
+                b += 3
+            if b == 3:
+                return True
 
 while True:
     show(xle)
     focus(xle)
-    if win_player("X"):
+    if win_player("X") == True:
         print("победил игрок")
         show(xle)
         break
     show(xle)
     prompt(xle)
-    if win_player("O"):
-        print("победил компютер")
+    if win_machine("O") == True:
+        print("победил компьютер")
         show(xle)
         break
 
